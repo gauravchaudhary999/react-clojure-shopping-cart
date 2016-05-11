@@ -1,8 +1,11 @@
 (ns api.handler
+  (:gen-class)
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [ring.util.response :as response]))
+            [ring.util.response :as response]
+            [ring.adapter.jetty :as jetty]
+            ))
 
 (def products-list "[\"cheese\", \"milk\", \"butter\"]")
 
@@ -17,3 +20,7 @@
 
 (def app
   (wrap-defaults app-routes site-defaults))
+
+ (defn -main [] 
+     (let [port (read-string (or (System/getenv "PORT") "3000"))]
+        (jetty/run-jetty #'app-routes {:port port, :join? false})))
