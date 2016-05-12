@@ -13,8 +13,8 @@ class App extends React.Component {
 		var request = new XMLHttpRequest();
 		request.addEventListener('load', 
 			(event) => (this.setState({products: JSON.parse(request.responseText)})));
-		
-		request.open("GET", "http://localhost:3000/products");
+	
+		request.open("GET", 'http://api:3000/products');
 		request.send();
 	} 
 
