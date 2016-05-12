@@ -8,8 +8,8 @@ var config = {
   entry: APP_DIR + '/app.jsx',
   output: {
     path: BUILD_DIR,
-    publicPath: '/dist/',
-    filename: 'bundle.js'
+    publicPath: '/js/',
+    filename: './js/bundle.js'
   },
   module : {
     loaders : [
